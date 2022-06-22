@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>DOOM</title>
+    <script src="js-dos.js"></script>
+</head>
+
+<body>
+    <center>
+        <canvas></canvas>
+        <br />
+        <button onclick="ci.fullscreen()" style="visibility: hidden;">Fullscreen</button>
+    </center>
+    <script>
+        Dos(document.getElementsByTagName("canvas")[0], { autolock: true }).ready((fs, main) => {
+            fs.extract("DOOM.zip").then(() => {
+                main(["-c", "DOOM"]).then((ci) => {
+                    window.ci = ci;
+                    document.getElementsByTagName("button")[0].style.visibility = 'initial';
+                    document.title = "DOOM";
+                })
+            });
+        });
+    </script>
+</body>
+
+</html>
